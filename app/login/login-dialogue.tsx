@@ -9,8 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 
 export function LoginDialog() {
@@ -28,17 +26,9 @@ export function LoginDialog() {
         <DialogHeader>
           <DialogTitle className="text-center">Login Page</DialogTitle>
           <DialogDescription className="text-center">
-            Enter your details below to login to your account.
+            Click on the button below to login to your account.
           </DialogDescription>
-          <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="email">Email</Label>
-            <Input type="email" id="email" placeholder="Email" />
-          </div>
-          <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="email">Password</Label>
-            <Input type="password" id="email" placeholder="Password" />
-          </div>
-          <Button onClick={handleLogin}>Login</Button>
+          <Button onClick={handleLogin}>SignIn with Google</Button>
         </DialogHeader>
         <DialogFooter></DialogFooter>
       </DialogContent>
