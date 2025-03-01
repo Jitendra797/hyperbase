@@ -9,14 +9,24 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 
 export function LoginDialog() {
-  const router = useRouter();
+  const supabase = createClient();
 
-  const handleLogin = () => {
-    router.push("/datastore/browse");
+  const handleLogin = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${location.origin}/auth/callback`,
+      },
+    });
+    if (error) {
+      console.error("Error signing in:", error);
+      // Handle error (e.g., show an error message)
+    }
   };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
